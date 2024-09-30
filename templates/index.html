@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تنبؤ المسمى الوظيفي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 300px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .error {
+            color: red;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>تنبؤ المسمى الوظيفي بناءً على المهارات</h1>
+    <form action="/predict" method="post">
+        <input type="text" name="input1" placeholder="ادخل المهارة 1" required>
+        <input type="text" name="input2" placeholder="ادخل المهارة 2" required>
+        <input type="text" name="input3" placeholder="ادخل المهارة 3" required>
+        <input type="text" name="input4" placeholder="ادخل المهارة 4" required>
+        <button type="submit">تنبؤ</button>
+    </form>
+    
+    {% if prediction %}
+        <div class="result">المسمى الوظيفي المتوقع: {{ prediction }}</div>
+    {% endif %}
+    
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+</body>
+</html>
